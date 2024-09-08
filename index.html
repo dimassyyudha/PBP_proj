@@ -1,12 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form Validation using PHP</title>
 </head>
+
 <body>
-    
-    
+    <div class="container">
+        <h2>Student Sign On Form</h2>
+        <form action="#" method="post">
+            <table>
+                <tr>
+                    <td><label for="username">Username:</label></td>
+                    <td><input type="text" id="username" name="username" required></td>
+                </tr>
+                <tr>
+                    <td><label for="email">Email:</label></td>
+                    <td><input type="email" id="email" name="email" required></td>
+                </tr>
+                <tr>
+                    <td><label for="perguruan_tinggi">Perguruan Tinggi:</label></td>
+                    <td><input type="text" id="perguruan_tinggi" name="perguruan_tinggi" required></td>
+                </tr>
+                <tr>
+                    <td>Program Studi:</td>
+                    <td>
+                        <label><input type="radio" name="program_studi" value="Informatika" required>
+                            Informatika</label><br>
+                        <label><input type="radio" name="program_studi" value="Matematika"> Matematika</label><br>
+                        <label><input type="radio" name="program_studi" value="Fisika"> Fisika</label><br>
+                        <label><input type="radio" name="program_studi" value="Kimia"> Kimia</label><br>
+                        <label><input type="radio" name="program_studi" value="Statistika"> Statistika</label><br>
+                        <label><input type="radio" name="program_studi" value="Biologi"> Biologi</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Hobi:</td>
+                    <td>
+                        <label><input type="checkbox" name="hobi" value="Futsal"> Futsal</label><br>
+                        <label><input type="checkbox" name="hobi" value="Badminton"> Badminton</label><br>
+                        <label><input type="checkbox" name="hobi" value="Membaca"> Membaca</label><br>
+                        <label><input type="checkbox" name="hobi" value="Menulis"> Menulis</label><br>
+                        <label><input type="checkbox" name="hobi" value="Travelling"> Travelling</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="password">Password:</label></td>
+                    <td><input type="password" id="password" name="password" required></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" class="submit-btn" value="Submit">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
 </body>
+
 </html>
