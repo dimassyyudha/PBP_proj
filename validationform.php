@@ -9,13 +9,12 @@ NAMA :
 KELAS : PBP-D 
 -->
 
-
 <?php
 $username = $email = $perguruan_tinggi = $program_studi = "";
 $hobi = array();
 $errors = array();
 
-function sanitize_input($data) {
+function sanitasi_input($data) { //untuk sanitasi data input dari pengguna agar lebih aman untuk diproses
     return htmlspecialchars(stripslashes(trim($data)));
 }
 
@@ -40,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["username"])) {
         $errors['username'] = "Username is required.";
     } else {
-        $username = sanitize_input($_POST["username"]);
+        $username = sanitasi_input($_POST["username"]);
         if (!preg_match('/^[a-zA-Z]+$/', $username)) {
             $errors['username'] = "Username must only contain letters.";
         }
@@ -49,26 +48,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["email"])) {
         $errors['email'] = "Email is required.";
     } else {
-        $email = sanitize_input($_POST["email"]);
+        $email = sanitasi_input($_POST["email"]);
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $errors['email'] = "Invalid email format.";
         }
     }
     
     if (isset($_POST["perguruan_tinggi"])) {
-        $perguruan_tinggi = sanitize_input($_POST["perguruan_tinggi"]);
+        $perguruan_tinggi = sanitasi_input($_POST["perguruan_tinggi"]);
     }
   
     if (empty($_POST["program_studi"])) {
         $errors['program_studi'] = "Program Studi is required.";
     } else {
-        $program_studi = sanitize_input($_POST["program_studi"]);
+        $program_studi = sanitasi_input($_POST["program_studi"]);
     }
 
 
     if (isset($_POST["hobi"]) && is_array($_POST["hobi"])) {
         $hobi = $_POST["hobi"];
-        $hobi = array_map('sanitize_input', $hobi);
+        $hobi = array_map('sanitasi_input', $hobi);
     } elseif (empty($_POST["hobi"])) {
         $hobi = array(); 
     }
@@ -77,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["password"])) {
         $errors['password'] = "Password is required.";
     } else {
-        $password = sanitize_input($_POST["password"]);
+        $password = sanitasi_input($_POST["password"]);
         $password_errors = validate_password($password);
         if (!empty($password_errors)) {
             $errors['password'] = implode(" ", $password_errors);
@@ -85,14 +84,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if (empty($errors)) {
-        echo "<script>alert('Form submitted successfully');</script>";
+        echo "<script>alert('Form submitted successfully!');</script>";
         echo "<h1>Display Detail Informasi Data</h1>";
         echo "<p style = 'font-size:30px;'>Username: $username</p>";
         echo "<p style = 'font-size:30px;'>Email: $email</p>";
         echo "<p style = 'font-size:30px;'>Perguruan Tinggi: $perguruan_tinggi</p>";
         echo "<p style = 'font-size:30px;'>Program Studi: $program_studi</p>";
         if (empty($hobi)) {
-            echo "<p style='font-size:30px;'>Hobi: Tidak ada hobi yang dipilih</p>";
+            echo "<p style='font-size:30px;'>Hobi: - </p>";
         } else {
             echo "<p style='font-size:30px;'>Hobi: " . implode(', ', $hobi) . "</p>";
         }
@@ -100,7 +99,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<script>";
         $semua_error = "";
         foreach ($errors as $key => $error) {
-            $semua_error .= $error . "\n";
+            $semua_error .= $error . "\n\n";
         }
         $semua_error = json_encode($semua_error);  // biar string aman untuk JavaScript
         echo "alert($semua_error);"; 
