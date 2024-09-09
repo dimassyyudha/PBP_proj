@@ -24,23 +24,23 @@ KELAS : PBO-D
             <tr>
                 <td>Username:</td>
                 <td>
-                    <input type="text" name="username" pattern="[A-Za-z]+" required>
+                    <input type="text" name="username">
                     <span>Note: Username cannot contain numbers</span>
                 </td>
             </tr>
             <tr>
                 <td>Email:</td>
                 <td>
-                    <input type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+                    <input type="email" name="email">
                     <span>Note: Email must contain @ followed by a domain</span>
                 </td>
             </tr>
             <tr>
                 <td>Perguruan Tinggi:</td>
-                <td><input type="text" name="perguruan_tinggi" required></td>
+                <td><input type="text" name="perguruan_tinggi" ></td>
             </tr>
             <tr>
-                <td><label for="program_studi" required>Program Studi:</label></td>
+                <td><label for="program_studi" >Program Studi:</label></td>
                 <td>
                     <label><input type="radio" name="program_studi" value="Informatika"> Informatika</label><br>
                     <label><input type="radio" name="program_studi" value="Matematika"> Matematika</label><br>
@@ -65,7 +65,7 @@ KELAS : PBO-D
             <tr>
                 <td><label for="password">Password:</label></td>
                 <td>
-                    <input type="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+                    <input type="password" name="password">
                     <span>Hint: Password must be at least 8 characters long, with at least one uppercase letter, one lowercase letter, and one number.</span>
                 </td>
             </tr>
