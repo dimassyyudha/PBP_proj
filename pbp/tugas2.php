@@ -1,3 +1,14 @@
+<!--  
+Membuat tampilan web form sederhana
+NAMA :
+1. Dimas Yudha Saputra     24060122120025
+2. Zikry Alfahri Akram     24060122120033
+3. Ardy Hasan Rona Akhmad  24060122130053
+4. Yahya Ilham Riyadi      24060122130069
+
+KELAS : PBO-D 
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,16 +50,18 @@
                     <label><input type="radio" name="program_studi" value="Biologi"> Biologi</label>
                 </td>
             </tr>
+
             <tr>
                 <td><label for="hobi">Hobi:</label></td>
                 <td>
-                    <label><input type="checkbox" name="hobi1" value="Futsal"> Futsal</label><br>
-                    <label><input type="checkbox" name="hobi2" value="Badminton"> Badminton</label><br>
-                    <label><input type="checkbox" name="hobi3" value="Membaca"> Membaca</label><br>
-                    <label><input type="checkbox" name="hobi4" value="Menulis"> Menulis</label><br>
-                    <label><input type="checkbox" name="hobi5" value="Travelling"> Travelling</label>
+                    <input type="checkbox" name="hobi[]" value="Futsal" id="Futsal"> <label for="Futsal">Futsal</label><br>
+                    <input type="checkbox" name="hobi[]" value="Badminton" id="Badminton"> <label for="Badminton">Badminton</label><br>
+                    <input type="checkbox" name="hobi[]" value="Membaca" id="Membaca"> <label for="Membaca">Membaca</label><br>
+                    <input type="checkbox" name="hobi[]" value="Menulis" id="Menulis"> <label for="Menulis">Menulis</label><br>
+                    <input type="checkbox" name="hobi[]" value="Travelling" id="Travelling"><label for="Travelling">Travelling</label><br> 
                 </td>
             </tr>
+
             <tr>
                 <td><label for="password">Password:</label></td>
                 <td>

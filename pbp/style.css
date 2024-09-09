@@ -1,5 +1,16 @@
+/* 
+Membuat tampilan web form sederhana
+NAMA :
+1. Dimas Yudha Saputra     24060122120025
+2. Zikry Alfahri Akram     24060122120033
+3. Ardy Hasan Rona Akhmad  24060122130053
+4. Yahya Ilham Riyadi      24060122130069
+
+KELAS : PBO-D 
+*/
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 h1 {
@@ -7,6 +18,7 @@ h1 {
     font-size: 24px;
     margin-bottom: 20px;
 }
+
 
 form {
     max-width: 600px;

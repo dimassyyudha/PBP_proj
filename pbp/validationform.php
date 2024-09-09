@@ -1,10 +1,22 @@
+<!--  
+Membuat tampilan web form sederhana
+NAMA :
+1. Dimas Yudha Saputra     24060122120025
+2. Zikry Alfahri Akram     24060122120033
+3. Ardy Hasan Rona Akhmad  24060122130053
+4. Yahya Ilham Riyadi      24060122130069
+
+KELAS : PBO-D 
+-->
+
+
 <?php
-// Initialize variables to hold form data and errors
+// Initialize variables
 $username = $email = $perguruan_tinggi = $program_studi = "";
 $hobi = array();
 $errors = array();
 
-// Function to sanitize input data
+// Function to security 
 function sanitize_input($data) {
     return htmlspecialchars(stripslashes(trim($data)));
 }
@@ -29,8 +41,6 @@ function validate_password($password) {
 
 // Check if the form was submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Validate and sanitize input data
-
     // Username
     if (empty($_POST["username"])) {
         $errors['username'] = "Username is required.";
@@ -62,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $program_studi = sanitize_input($_POST["program_studi"]);
     }
-    
+
     // Hobi
     if (isset($_POST["hobi"]) && is_array($_POST["hobi"])) {
         $hobi = $_POST["hobi"];
@@ -86,17 +96,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    // Display errors or show the submitted data
+    // Display in browser
     if (empty($errors)) {
-        // Display the submitted data (excluding password)
-        echo "<h2>Submitted Data</h2>";
-        echo "<p>Username: $username</p>";
-        echo "<p>Email: $email</p>";
-        echo "<p>Perguruan Tinggi: $perguruan_tinggi</p>";
-        echo "<p>Program Studi: $program_studi</p>";
-        echo "<p>Hobi: " . (empty($hobi) ? "None" : implode(', ', $hobi)) . "</p>";
+        echo "<script>alert('Form submitted successfully');</script>";
+        echo "<h1>Display Detail Informasi Data</h1>";
+        echo "<p style = 'font-size:30px;'>Username: $username</p>";
+        echo "<p style = 'font-size:30px;'>Email: $email</p>";
+        echo "<p style = 'font-size:30px;'>Perguruan Tinggi: $perguruan_tinggi</p>";
+        echo "<p style = 'font-size:30px;'>Program Studi: $program_studi</p>";
+        if (empty($hobi)) {
+            echo "<p style='font-size:30px;'>Hobi: Tidak ada hobi yang dipilih</p>";
+        } else {
+            echo "<p style='font-size:30px;'>Hobi: " . implode(', ', $hobi) . "</p>";
+        }
     } else {
-        // Display errors one by one using JavaScript alerts
         echo "<script>";
         foreach ($errors as $key => $error) {
             echo "alert('$error');";
