@@ -98,11 +98,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     } else {
         echo "<script>";
+        $semua_error = "";
         foreach ($errors as $key => $error) {
-            echo "alert('$error');";
+            $semua_error .= $error . "\n";
         }
+        $semua_error = json_encode($semua_error);  // biar string aman untuk JavaScript
+        echo "alert($semua_error);"; 
         echo "history.back();";
         echo "</script>";
+        
     }
 }
 ?>
