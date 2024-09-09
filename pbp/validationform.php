@@ -11,17 +11,14 @@ KELAS : PBO-D
 
 
 <?php
-// Initialize variables
 $username = $email = $perguruan_tinggi = $program_studi = "";
 $hobi = array();
 $errors = array();
 
-// Function to security 
 function sanitize_input($data) {
     return htmlspecialchars(stripslashes(trim($data)));
 }
 
-// Function to validate password
 function validate_password($password) {
     $errors = array();
     if (!preg_match('/[A-Z]/', $password)) {
@@ -39,9 +36,7 @@ function validate_password($password) {
     return $errors;
 }
 
-// Check if the form was submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Username
     if (empty($_POST["username"])) {
         $errors['username'] = "Username is required.";
     } else {
@@ -50,8 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $errors['username'] = "Username must only contain letters.";
         }
     }
-    
-    // Email
+   
     if (empty($_POST["email"])) {
         $errors['email'] = "Email is required.";
     } else {
@@ -61,31 +55,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
     
-    // Perguruan Tinggi
     if (isset($_POST["perguruan_tinggi"])) {
         $perguruan_tinggi = sanitize_input($_POST["perguruan_tinggi"]);
     }
-    
-    // Program Studi
+  
     if (empty($_POST["program_studi"])) {
         $errors['program_studi'] = "Program Studi is required.";
     } else {
         $program_studi = sanitize_input($_POST["program_studi"]);
     }
 
-    // Hobi
+
     if (isset($_POST["hobi"]) && is_array($_POST["hobi"])) {
         $hobi = $_POST["hobi"];
-        // Sanitize each hobby selection
         $hobi = array_map('sanitize_input', $hobi);
     } elseif (empty($_POST["hobi"])) {
-        $hobi = array(); // No hobbies selected
-    } else {
-        // If hobi is set but not an array, throw an error
-        $errors['hobi'] = "Hobi must be an array of selected hobbies or left empty.";
+        $hobi = array(); 
     }
 
-    // Password
+
     if (empty($_POST["password"])) {
         $errors['password'] = "Password is required.";
     } else {
@@ -96,7 +84,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    // Display in browser
     if (empty($errors)) {
         echo "<script>alert('Form submitted successfully');</script>";
         echo "<h1>Display Detail Informasi Data</h1>";
